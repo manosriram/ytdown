@@ -16,16 +16,29 @@
 
   <style>
     #url {
-      width: 40%;
+      width: 70%;
+      height: 50px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    #download {
+      color: black;
     }
   </style>
 
   <body>
-    <h1>Hello, There!!</h1>
+    <%- include navbar.ejs %>
     <div class="jumbotron">
       <div class="container">
         <form action="/home/getYourFile" method="POST">
-          <input type="text" name="url" placeholder="Url Here.." id="url" />
+          <input
+            type="text"
+            name="url"
+            placeholder="Place Url Here....."
+            id="url"
+            autocomplete="off"
+            autofocus="on"
+          />
           <br />
           <br />
 

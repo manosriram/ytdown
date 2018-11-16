@@ -12,7 +12,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Download</title>
   </head>
+  <style>
+    #download {
+      color: black;
+    }
+  </style>
   <body>
-    <h3>Download!</h3>
+    <%- include navbar.ejs %>
+    <div class="jumbotron">
+      <div class="alert alert-success" role="alert">
+        <h3 id="download">Click Below to Begin Download!!</h3>
+      </div>
+      <br /><br />
+      <div class="container">
+        <form action="/home/getVideo" method="POST">
+          <input
+            type="submit"
+            name="getV"
+            class="btn btn-success"
+            value="Download"
+            onclick="change()"
+          />
+        </form>
+        <script>
+          function change() {
+            document.querySelector("#download").innerHTML =
+              "Your Download Will Begin in a Moment..";
+          }
+        </script>
+      </div>
+    </div>
   </body>
 </html>
