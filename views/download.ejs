@@ -21,7 +21,7 @@
     <%- include navbar.ejs %>
     <div class="jumbotron">
       <div class="alert alert-success" role="alert">
-        <h3 id="download">Click Below to Begin Download!!</h3>
+        <h3>Your Download Will begin Shortly...</h3>
       </div>
       <br /><br />
       <div class="container">
@@ -31,14 +31,33 @@
             name="getV"
             class="btn btn-success"
             value="Download"
-            onclick="change()"
+            id="download"
+            onclick="timeLeft()"
           />
         </form>
         <script>
-          function change() {
-            document.querySelector("#download").innerHTML =
-              "Your Download Will Begin in a Moment..";
-          }
+          var downloadButton = document.getElementById("download");
+          var counter = 20;
+          var newElement = document.createElement("p");
+          newElement.innerHTML = "You can download the file in 200 seconds.";
+          var id;
+
+          downloadButton.parentNode.replaceChild(newElement, downloadButton);
+
+          id = setInterval(function() {
+            counter--;
+            if (counter < 0) {
+              newElement.parentNode.replaceChild(downloadButton, newElement);
+              clearInterval(id);
+            } else {
+              newElement.innerHTML =
+                "You can download the file in " +
+                counter.toString() +
+                " seconds.";
+              newElement.className = "alert alert-success";
+              newElement.role = "alert";
+            }
+          }, 1000);
         </script>
       </div>
     </div>
