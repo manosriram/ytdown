@@ -3,11 +3,7 @@ const router = express.Router();
 const ffmpeg = require("ffmpeg");
 const ytdl = require("ytdl-core");
 const fs = require("fs");
-<<<<<<< HEAD
-const path = require("path");
-=======
 const request = require("request");
->>>>>>> f7b6bdcba8634967fd24ddc5978459b2b3f484b9
 
 router.get("/", (req, res) => {
   res.render("download");
@@ -25,11 +21,7 @@ router.post("/getYourFile", (req, res) => {
     res.cookie("checkA", 1, { maxAge: 90000000 });
     ytdl(url, {
       filter: format => format.container === "mp4"
-<<<<<<< HEAD
-    }).pipe;
-=======
     }).pipe(fs.createWriteStream("video.mp4", { bufferSize: 64 * 1024 }));
->>>>>>> f7b6bdcba8634967fd24ddc5978459b2b3f484b9
     res.render("download");
   } else {
     res.status(403).render("error");
@@ -39,19 +31,8 @@ router.post("/getYourFile", (req, res) => {
 router.post("/getVideo", (req, res) => {
   res.cookie("checkA", 0);
   var file = __dirname + "/../video.mp4";
-<<<<<<< HEAD
-  res.download(__dirname + "/../video.mp4", "video.mp4");
-
-  fs.access(file, err => {
-    if (!err) {
-      fs.unlinkSync(file);
-    }
-  });
-  // res.redirect("remove");
-=======
   console.log(fs.stat(file));
   res.download(__dirname + "/../video.mp4");
->>>>>>> f7b6bdcba8634967fd24ddc5978459b2b3f484b9
 });
 
 function deleteFile(file) {
