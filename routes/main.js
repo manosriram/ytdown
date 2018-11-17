@@ -30,8 +30,6 @@ router.post("/getYourFile", (req, res) => {
 
 router.post("/getVideo", (req, res) => {
   res.cookie("checkA", 0);
-  var file = __dirname + "/../video.mp4";
-  console.log(fs.stat(file));
   res.download(__dirname + "/../video.mp4");
 });
 
